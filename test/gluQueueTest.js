@@ -4,7 +4,7 @@ var should = require("should");
 var GQ = require('../lib/gluQueue.js');
 
 describe("gluQueue", function() {
-  describe("processGluModel", function() {
+  describe("forEachArtifact", function() {
     it('should send 5 unique messages', function(done) {
 
       var count = 0;
@@ -32,7 +32,7 @@ describe("gluQueue", function() {
         count++;
       }
 
-      GQ.processGluModel("glu.json", counter);
+      GQ.forEachArtifact("glu.json", counter);
     });
 
     it('should invoke call with error', function(done) {
@@ -42,7 +42,7 @@ describe("gluQueue", function() {
         (applicationName === null).should.equal(true);
       }
 
-      GQ.processGluModel("invalid.json", expectError);
+      GQ.forEachArtifact("invalid.json", expectError);
       done();
     });
   });
