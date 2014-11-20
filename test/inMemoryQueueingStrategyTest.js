@@ -8,7 +8,6 @@ var imqs = require('../lib/inMemoryQueueingStrategy.js');
 describe("InMemoryQueueingStrategy", function() {
   it('sends messages right to receiver', function(done) {
     var message = "Message 1234";
-    var strat = new imqs.InMemoryQueueingStrategy();
 
     function recieve(err, message) {
       message.should.equal(message);
@@ -19,6 +18,7 @@ describe("InMemoryQueueingStrategy", function() {
       messageId.should.be.a.number;
     }
 
+    var strat = new imqs.InMemoryQueueingStrategy();
     var q = new queue.Queue(strat);
     q.receiveMessage(null, recieve);
     q.sendMessage({
