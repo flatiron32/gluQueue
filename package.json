@@ -10,7 +10,7 @@
   "main": "gluQueue.js",
   "scripts": {
     "lint": "./node_modules/.bin/jshint . --reporter=./node_modules/jshint/node_modules/cli/index.js",
-    "checkStyle": "./node_modules/.bin/jscs lib",
+    "checkStyle": "./node_modules/.bin/jscs .",
     "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
     "posttest": "./node_modules/.bin/istanbul check-coverage" 

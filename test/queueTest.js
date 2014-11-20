@@ -11,30 +11,32 @@ describe("queue", function() {
       strat.initialized.should.equal(true);
     });
   });
-  
+
   describe("recieveMessage", function() {
     it('unpacks message envolope from strategy and delegates message to callback', function(done) {
       var strat = new TestQueueingStrategy();
-      
+
       function recieve(err, message) {
         message.should.equal("Message Received");
         done();
       }
-      
+
       new queue.Queue(strat).receiveMessage(null, recieve);
     });
   });
-  
+
   describe("sendMessage", function() {
     it('packs message and delegates response callback to strategy', function(done) {
       var strat = new TestQueueingStrategy();
-      
+
       function sent(err, messageId) {
         messageId.should.equal(1234);
         done();
       }
-      
-      new queue.Queue(strat).sendMessage({MessageBody: "Message Sent"}, sent);
+
+      new queue.Queue(strat).sendMessage({
+        MessageBody: "Message Sent"
+      }, sent);
     });
   });
 });
@@ -53,11 +55,13 @@ TestQueueingStrategy.prototype.receiveMessage = function(params, callback) {
 
 TestQueueingStrategy.prototype.sendMessage = function(params, callback) {
   params.MessageBody.should.equal("Message Sent");
-  callback(null, {MessageId: 1234});
+  callback(null, {
+    MessageId: 1234
+  });
 };
 
 function SimpleEnvelope(message) {
-  this.Messages = [{
-      Body: message
-  }];
+  this.Messages = [ {
+    Body: message
+  } ];
 }

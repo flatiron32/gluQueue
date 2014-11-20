@@ -21,5 +21,4 @@
 , "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": true }
 , "requireSpaceBeforeBinaryOperators": true
 , "requireSpaceAfterBinaryOperators": true
-, "requireSpaceBeforePostfixUnaryOperators": true
 }
