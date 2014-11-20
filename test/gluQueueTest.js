@@ -9,7 +9,7 @@ describe("gluQueue", function() {
       
       var count = 0;
       function counter(err, applicationName) {
-        (err == null).should.be.true;
+        (err === null).should.equal(true);
         
         switch(count)
         {
@@ -30,8 +30,8 @@ describe("gluQueue", function() {
           done();
           break;
         }
-        count = count + 1;
-      };
+        count++;
+      }
       
       GQ.processGluModel("glu.json", counter);
     });
@@ -39,12 +39,12 @@ describe("gluQueue", function() {
     it('should invoke call with error', function(done) {
       
       function expectError(err, applicationName) {
-        (err != null).should.be.true;
-        (applicationName == null).should.be.true;
-      };
+        (err !== null).should.equal(true);
+        (applicationName === null).should.equal(true);
+      }
       
       GQ.processGluModel("invalid.json", expectError);
       done();
     });
-});
+  });
 });

@@ -8,7 +8,7 @@ describe("queue", function() {
     it('should take a strategy', function() {
       var strat = new TestQueueingStrategy();
       new queue.Queue(strat);
-      strat.initialized.should.be.true;
+      strat.initialized.should.equal(true);
     });
   });
   
@@ -45,19 +45,19 @@ function TestQueueingStrategy() {
 
 TestQueueingStrategy.prototype.initialize = function() {
   this.initialized = true;
-}
+};
 
 TestQueueingStrategy.prototype.receiveMessage = function(params, callback) {
   callback(null, new SimpleEnvelope("Message Received"));
-}
+};
 
 TestQueueingStrategy.prototype.sendMessage = function(params, callback) {
   params.MessageBody.should.equal("Message Sent");
   callback(null, {MessageId: 1234});
-}
+};
 
 function SimpleEnvelope(message) {
   this.Messages = [{
       Body: message
   }];
-};
+}
