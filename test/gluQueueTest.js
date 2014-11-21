@@ -6,7 +6,7 @@ var queue = require('../lib/queue.js');
 var imqs = require('../lib/inMemoryQueueingStrategy.js');
 
 describe("gluQueue", function() {
-  describe("forEachApplications", function() {
+  describe("forEachApplication", function() {
     it('should send 5 unique messages', function(done) {
 
       var count = 0;
@@ -81,6 +81,34 @@ describe("gluQueue", function() {
       q.receiveMessage({}, counter);
 
       GQ.enqueueApplications("glu.json", q, done);
+    });
+  });
+
+  describe("processModel", function() {
+    it('should log processed applications from queue', function(done) {
+      var count = 0;
+      function counter(err, applicationName) {
+        switch (count) {
+        case 0:
+          applicationName.should.equal("orbitz-host-itsb");
+          break;
+        case 1:
+          applicationName.should.equal("orbitz-host-gash");
+          break;
+        case 2:
+          applicationName.should.equal("orbitz-host-tbs-shop");
+          break;
+        case 3:
+          applicationName.should.equal("orbitz-host-tbs-txn");
+          break;
+        case 4:
+          applicationName.should.equal("orbitz-web-wl");
+          done();
+          break;
+        }
+        count++;
+      }
+      GQ.processModel("glu.json", counter);
     });
   });
 });

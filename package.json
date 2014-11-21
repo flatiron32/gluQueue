@@ -20,6 +20,7 @@
   , "url" : "https://github.com/flatiron32/gluQueue.git"
   },
   "dependencies" : {
+    "commander": "latest",
     "aws-sdk": "latest"
   },
   "devDependencies" : {
