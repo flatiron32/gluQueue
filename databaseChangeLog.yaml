@@ -1,0 +1,15 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: Jacob Tomaw
+    comment: Initial Scores table creation
+    changes: 
+    - createTable:
+        tableName: scores
+        columns:
+        - column:
+            name: repository
+            type: varchar(255)
+        - column:
+            name: score
+            type: integer
