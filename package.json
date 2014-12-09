@@ -4,8 +4,8 @@
   "description": "Create queue message from glu json model",
   "license": "MIT",
   "author": {
-    "name" : "Jacob Tomaw",
-    "email" : "jacob.tomaw@gmail.com"
+    "name": "Jacob Tomaw",
+    "email": "jacob.tomaw@gmail.com"
   },
   "main": "gluQueue.js",
   "scripts": {
@@ -13,21 +13,24 @@
     "checkStyle": "./node_modules/.bin/jscs .",
     "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
-    "posttest": "./node_modules/.bin/istanbul check-coverage" 
+    "posttest": "./node_modules/.bin/istanbul check-coverage"
   },
   "repository": {
-    "type" : "git"
-  , "url" : "https://github.com/flatiron32/gluQueue.git"
+    "type": "git",
+    "url": "https://github.com/flatiron32/gluQueue.git"
   },
-  "dependencies" : {
-    "commander": "latest",
-    "aws-sdk": "latest"
+  "dependencies": {
+    "aws-sdk": "latest",
+    "gift": "latest",
+    "mysql": "^2.5.3",
+    "sqlite3": "^3.0.4",
+    "tmp": "latest"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "jshint": "latest",
     "jscs": "latest",
     "istanbul": "latest",
     "mocha": "latest",
-    "should": "latest"
+    "should": "latest",
   }
 }
