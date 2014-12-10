@@ -1,1 +1,2 @@
 language: node_js
+env: SCORE_DB_URL="jdbc:mysql://localhost:3306/score"
