@@ -11,9 +11,11 @@
   "scripts": {
     "lint": "./node_modules/.bin/jshint . --reporter=./node_modules/jshint/node_modules/cli/index.js",
     "checkStyle": "./node_modules/.bin/jscs .",
-    "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle",
+    "databaseSetup": "mysql --user=root -e 'create database IF NOT EXISTS score' && liquibase --username=root --url=jdbc:mysql://localhost:13306/score update",
+    "databaseTeardown": "mysql --user=root -e 'drop database IF EXISTS score;'",
+    "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle && npm run-script databaseSetup",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
-    "posttest": "./node_modules/.bin/istanbul check-coverage"
+    "posttest": "./node_modules/.bin/istanbul check-coverage && npm run-script databaseTeardown"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,6 @@
     "jscs": "latest",
     "istanbul": "latest",
     "mocha": "latest",
-    "should": "latest",
+    "should": "latest"
   }
 }
