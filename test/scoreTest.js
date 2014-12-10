@@ -23,7 +23,11 @@ describe("saveScore", function() {
         database: 'score'
       });
 
-      connection.connect();
+      connection.connect(function(err) {
+        if (err) {
+          err.shoulc.not.be.ok;
+        }
+      });
 
       var initialCount = 0;
       connection.query('SELECT count(*) as count FROM scores', function(err, rows, fields) {
