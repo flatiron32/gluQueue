@@ -25,6 +25,7 @@
     "aws-sdk": "latest",
     "gift": "latest",
     "mysql": "^2.5.3",
+    "nconf": "^0.7.1",
     "sqlite3": "^3.0.4",
     "tmp": "latest"
   },
