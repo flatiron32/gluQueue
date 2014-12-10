@@ -13,7 +13,7 @@
     "checkStyle": "./node_modules/.bin/jscs .",
     "databaseSetup": "mysql --user=root -e 'create database IF NOT EXISTS score' && ./db/liquibase.sh",
     "databaseTeardown": "mysql --user=root -e 'drop database IF EXISTS score;'",
-    "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle && npm run-script databaseSetup",
+    "pretest": "rm -rf coverage && npm run-script lint && npm run-script checkStyle && git init test/repos/empty && npm run-script databaseSetup",
     "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
     "posttest": "./node_modules/.bin/istanbul check-coverage && npm run-script databaseTeardown"
   },
