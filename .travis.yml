@@ -1,2 +1,2 @@
 language: node_js
-env: SCORE_DB_URL="jdbc:mysql://localhost:3306/score"
+env: SCORE_DB_URL="jdbc:mysql://localhost:3306/score" database_port=3306
